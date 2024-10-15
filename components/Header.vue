@@ -1,5 +1,5 @@
 <template>
-  <header class="flex justify-between items-center p-4 bg-gray-200 text-black">
+  <header class="flex justify-between items-center p-4 bg-white text-black">
     <div class="flex items-center">
       <img src="@/static/easy.jpg" alt="Company Logo" class="h-10 mr-4" /> <!-- Replace with your logo path -->
       <nav>

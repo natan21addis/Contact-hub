@@ -21,5 +21,7 @@ export default {
 </script>
 
 <style scoped>
-/* Add any global styles you want here */
+body {
+  background-color: #f0f0f0; /* Light gray */
+}
 </style>
