@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen p-4">
-    <div class="flex-1 flex justify-center items-center bg-white bg-opacity-75 p-4 md:p-10">
-      <div class="relative z-10 text-left text-white">
+    <div class="flex-1 flex justify-center items-center bg-transparent p-4 md:p-10">
+      <div class="relative z-10 text-left">
         <h1 class="text-4xl md:text-5xl font-bold mb-4 text-red-700 animate-fade-in-left text-shadow">
           Contact Handling Website
         </h1>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="flex-1 flex justify-center items-center">
-      <img src="phonee.avif" alt="Hero Image" class="hero-image" />
+      <img src="call.webp" alt="Hero Image" class="hero-image" />
     </div>
   </div>
 </template>
@@ -88,14 +88,11 @@ export default {
 }
 
 .hero-image {
-  position: relative; /* Adjust if needed */
-  width:700px; /* Set the width as needed */
+  width: 700px; /* Set the width as needed */
   height: 85%; /* Maintain aspect ratio */
   max-width: 800px; /* Maximum width limit */
   top: 8%; /* Adjust top positioning */
-  right: 0; /* Adjust right positioning */
   left: 0; /* Center the image */
-  bottom: 0; /* Adjust bottom positioning */
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
 }
