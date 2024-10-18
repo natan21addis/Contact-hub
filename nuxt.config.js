@@ -1,8 +1,8 @@
 export default {
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+  // Disable server-side rendering
   ssr: false,
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Global page headers
   head: {
     title: "mycontacts",
     htmlAttrs: {
@@ -17,24 +17,25 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  // Global CSS
   css: ["@/static/css/tailwind.css"],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  // Plugins to run before rendering page
   plugins: [],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
+  // Auto import components
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/tailwindcss
-    "@nuxtjs/tailwindcss",
-  ],
+  // Modules for dev and build (recommended)
+  buildModules: ["@nuxtjs/tailwindcss"],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  // Modules
+  modules: ["@nuxtjs/axios"],
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  // Build Configuration
   build: {},
+
+  axios: {
+    baseURL: "https://mycontactsbackend-11.onrender.com/api", // Set your API base URL here
+  },
 };

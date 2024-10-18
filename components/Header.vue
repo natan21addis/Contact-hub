@@ -8,6 +8,9 @@
           <li><a href="#about" class="hover:text-blue-400">About</a></li>
           <li><a href="#services" class="hover:text-blue-400">Services</a></li>
           <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
+          <li v-if="isAuthorized">
+            <nuxt-link to="/contacts" class="hover:text-blue-400">Contacts</nuxt-link>
+          </li>
         </ul>
       </nav>
     </div>
@@ -20,6 +23,12 @@
 <script>
 export default {
   name: 'HeaderComponent',
+  computed: {
+    isAuthorized() {
+      // Check if the auth token exists in local storage
+      return !!localStorage.getItem('authToken');
+    },
+  },
 };
 </script>
 
