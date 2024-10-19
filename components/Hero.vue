@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen p-4">
     <div class="flex-1 flex justify-center items-center bg-transparent p-4 md:p-10">
-      <div class="relative z-10 text-left">
+      <div class="relative z-10 text-left position-adjust">
         <h1 class="text-4xl md:text-5xl font-bold mb-4 text-red-700 animate-fade-in-left text-shadow">
           Contact Handling Website
         </h1>
@@ -31,13 +31,15 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Hero',
-};
-</script>
-
 <style scoped>
+.position-adjust {
+  position: relative; /* Allows positioning children */
+  top: 80px; /* Adjusts the top position */
+  left: 10px; /* Adjusts the left position */
+  right: 10px; /* Adjusts the right position */
+  /* Use bottom if needed, e.g., bottom: 20px; */
+}
+
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -88,12 +90,12 @@ export default {
 }
 
 .hero-image {
-  width: 700px; /* Set the width as needed */
-  height: 85%; /* Maintain aspect ratio */
-  max-width: 800px; /* Maximum width limit */
-  top: 8%; /* Adjust top positioning */
-  left: 0; /* Center the image */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  width: 600px;
+  height: 85%;
+  max-width: 800px;
+  top: 8%;
+  left: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 </style>
