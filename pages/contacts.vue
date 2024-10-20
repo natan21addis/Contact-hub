@@ -58,46 +58,62 @@ export default {
       limit: 10,
       isLoading: false,
       errorMessage: null,
+      userId: null, // Initialize userId
     };
   },
   methods: {
+    getUserIdFromToken() {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decode the token
+        return payload.userId; // Adjust according to your token structure
+      }
+      return null;
+    },
     async fetchContacts() {
       this.isLoading = true;
-      this.errorMessage = null; // Reset error message
+      this.errorMessage = null;
 
-      // Retrieve the token from local storage
       const token = localStorage.getItem('authToken');
+      if (!token) {
+        this.errorMessage = 'Unauthorized access. Please log in.';
+        this.isLoading = false;
+        return;
+      }
+
+      this.userId = this.getUserIdFromToken(); // Get userId from token
 
       try {
         const response = await this.$axios.get(`/contacts?page=${this.currentPage}&limit=${this.limit}`, {
           headers: {
-            Authorization: `Bearer ${token}`, // Set the auth token in the headers
+            Authorization: `Bearer ${token}`,
           },
         });
         this.contacts = response.data.contacts;
         this.totalPages = response.data.totalPages;
       } catch (error) {
-        this.errorMessage = error.response?.data?.message || 'Failed to fetch contacts. Please try again later.';
-        console.error('Error fetching contacts:', error);
+        this.handleError(error);
       } finally {
         this.isLoading = false;
       }
     },
     async deleteContact(id) {
       if (confirm('Are you sure you want to delete this contact?')) {
-        // Retrieve the token from local storage
         const token = localStorage.getItem('authToken');
+        if (!token) {
+          this.errorMessage = 'Unauthorized access. Please log in.';
+          return;
+        }
 
         try {
           await this.$axios.delete(`/contacts?id=${id}`, {
             headers: {
-              Authorization: `Bearer ${token}`, // Set the auth token in the headers
+              Authorization: `Bearer ${token}`,
             },
           });
           this.fetchContacts(); // Refresh the list after deletion
         } catch (error) {
-          this.errorMessage = 'Failed to delete contact. Please try again.';
-          console.error('Error deleting contact:', error);
+          this.handleError(error);
         }
       }
     },
@@ -112,11 +128,19 @@ export default {
         this.currentPage--;
         this.fetchContacts();
       }
-    }
+    },
+    handleError(error) {
+      console.error('Error:', error);
+      if (error.response) {
+        this.errorMessage = error.response.data.message || 'An error occurred. Please try again.';
+      } else {
+        this.errorMessage = 'Network error. Please check your connection.';
+      }
+    },
   },
   async mounted() {
     await this.fetchContacts();
-  }
+  },
 };
 </script>
 
