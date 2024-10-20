@@ -20,7 +20,7 @@
         </div>
         <div class="text-center">
           <button class="mt-16 font-bold bg-gray-300 text-black py-3 px-6 rounded shadow-md hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-transform transform hover:scale-105 text-center">
-            <nuxt-link to="SignUp">GET STARTED</nuxt-link>
+            <nuxt-link to="contacts">GET STARTED</nuxt-link>
           </button>
         </div>
       </div>
