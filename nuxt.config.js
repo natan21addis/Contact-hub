@@ -36,6 +36,6 @@ export default {
   build: {},
 
   axios: {
-    baseURL: "http://localhost:3000/api", // Set your API base URL here
+    baseURL: "https://mycontactsbackend-12.onrender.com/api", // Set your API base URL here
   },
 };
